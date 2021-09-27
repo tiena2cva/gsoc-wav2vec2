@@ -1,7 +1,6 @@
 from functools import partial
 
 import tensorflow as tf
-import wandb
 
 
 class LoggingCallback(tf.keras.callbacks.Callback):
@@ -11,13 +10,13 @@ class LoggingCallback(tf.keras.callbacks.Callback):
 
     def on_train_batch_end(self, batch, logs):
         if batch % self.logging_steps == 0:
-            wandb.log({**logs, "lr": self.model.optimizer.learning_rate}, commit=True)
+            print({**logs, "lr": self.model.optimizer.learning_rate})
 
     def on_test_end(self, logs):
-        wandb.log(logs, commit=False)
+        print(logs)
 
     def on_epoch_end(self, epoch, logs):
-        wandb.log({**logs, "epoch": epoch}, commit=False)
+        print({**logs, "epoch": epoch})
 
 
 def fetch_callbacks(args, is_stage2=False):
