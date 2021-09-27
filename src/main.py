@@ -263,8 +263,8 @@ if __name__ == "__main__":
 
     # setting up args for training (supports wandb sweep for distributed hparams tuning)
     args = TrainingArgs()
-    wandb.init(project=args.project_name, config=asdict(args))
-    args.ckpt_path = os.path.join(args.ckpt_path + f"-{wandb.run.id}")
+
+    args.ckpt_path = os.path.join(args.ckpt_path + "01")
 
     # setting up seed for reproducible runs
     tf.random.set_seed(args.seed)
