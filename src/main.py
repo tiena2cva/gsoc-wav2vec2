@@ -129,7 +129,10 @@ def build_model(args):
     model_config = Wav2Vec2Config(apply_spec_augment=args.apply_spec_augment, survival_prob=args.survival_prob)
     model = Wav2Vec2ForCTC(model_config, input_shape=(1, args.audio_maxlen))
     print(f"loading model from {args.model_id}")
-    model.load_weights(f"{args.model_id}/tf_model")
+    
+    # TODO: Load weight
+    #model.load_weights(f"{args.model_id}/tf_model")
+    
     return model
 
 
